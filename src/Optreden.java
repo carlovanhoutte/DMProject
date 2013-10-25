@@ -1,3 +1,7 @@
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -8,11 +12,19 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class Optreden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer optredenID;
     private Date starttijdstipSoundcheck;
     private Date starttijdstipOptreden;
     private Date eindtijdstip;
     private Boolean toelatingPers;
+    @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
+    @JoinColumn(name = "zoneID", nullable = false)
     private Zone zone;
+    @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
+    @JoinColumn(name = "artiestID", nullable = false)
     private Artiest artiest;
 }
