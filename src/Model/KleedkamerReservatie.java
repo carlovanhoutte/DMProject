@@ -14,7 +14,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.KleedkamerReservatie")
+@Table(name = "KleedkamerReservatie")
 public class KleedkamerReservatie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +29,47 @@ public class KleedkamerReservatie {
     @Cascade(CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "artiestID", nullable = false)
     private Artiest artiest;
+
+    public KleedkamerReservatie() {
+    }
+
+    public Integer getReservatieID() {
+        return reservatieID;
+    }
+
+    public void setReservatieID(Integer reservatieID) {
+        this.reservatieID = reservatieID;
+    }
+
+    public Date getBegintijdstip() {
+        return begintijdstip;
+    }
+
+    public void setBegintijdstip(Date begintijdstip) {
+        this.begintijdstip = begintijdstip;
+    }
+
+    public Date getEindtijdstip() {
+        return eindtijdstip;
+    }
+
+    public void setEindtijdstip(Date eindtijdstip) {
+        this.eindtijdstip = eindtijdstip;
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public Artiest getArtiest() {
+        return artiest;
+    }
+
+    public void setArtiest(Artiest artiest) {
+        this.artiest = artiest;
+    }
 }

@@ -15,7 +15,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.Ticket")
+@Table(name = "Ticket")
 public class Ticket {
 
     @Id
@@ -33,4 +33,51 @@ public class Ticket {
     @ManyToMany(mappedBy = "tickets")
     @Cascade({CascadeType.SAVE_UPDATE})
     private Set<Festivaldag> festivaldagen = new HashSet<Festivaldag>();
+
+    public Ticket() {
+    }
+
+    public Integer getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(Integer barcode) {
+        this.barcode = barcode;
+    }
+
+    public TicketType getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
+    }
+
+    public Bestelling getBestellings() {
+        return bestellings;
+    }
+
+    public void setBestellings(Bestelling bestellings) {
+        this.bestellings = bestellings;
+    }
+
+    public Float getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(Float prijs) {
+        this.prijs = prijs;
+    }
+
+    public Set<Festivaldag> getFestivaldagen() {
+        return festivaldagen;
+    }
+
+    public void setFestivaldagen(Set<Festivaldag> festivaldagen) {
+        this.festivaldagen = festivaldagen;
+    }
+
+    public void addFestivaldag(Festivaldag festivaldag) {
+        festivaldagen.add(festivaldag);
+    }
 }

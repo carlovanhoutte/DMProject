@@ -14,7 +14,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.TrackingRecord")
+@Table(name = "TrackingRecord")
 public class TrackingRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +32,47 @@ public class TrackingRecord {
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "zoneID", nullable = false)
     private Zone zoneIn;
+
+    public TrackingRecord() {
+    }
+
+    public Integer getTrackingRecordID() {
+        return trackingRecordID;
+    }
+
+    public void setTrackingRecordID(Integer trackingRecordID) {
+        this.trackingRecordID = trackingRecordID;
+    }
+
+    public Date getTijdstip() {
+        return tijdstip;
+    }
+
+    public void setTijdstip(Date tijdstip) {
+        this.tijdstip = tijdstip;
+    }
+
+    public RFID getRfid() {
+        return rfid;
+    }
+
+    public void setRfid(RFID rfid) {
+        this.rfid = rfid;
+    }
+
+    public Zone getZoneUit() {
+        return zoneUit;
+    }
+
+    public void setZoneUit(Zone zoneUit) {
+        this.zoneUit = zoneUit;
+    }
+
+    public Zone getZoneIn() {
+        return zoneIn;
+    }
+
+    public void setZoneIn(Zone zoneIn) {
+        this.zoneIn = zoneIn;
+    }
 }

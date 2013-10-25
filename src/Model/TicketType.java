@@ -17,7 +17,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.TicketType")
+@Table(name = "TicketType")
 public class TicketType {
 
     @Id
@@ -27,9 +27,40 @@ public class TicketType {
     @ManyToMany
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "ZoneTicket",
-        joinColumns = {@JoinColumn(name = "ticketTypeID")},
-        inverseJoinColumns = {@JoinColumn(name = "zoneTypeID")})
+            joinColumns = {@JoinColumn(name = "ticketTypeID")},
+            inverseJoinColumns = {@JoinColumn(name = "zoneTypeID")})
     @OrderBy
     @OrderColumn()
     private Set<ZoneType> zoneTypes = new HashSet<ZoneType>();
+
+    public TicketType() {
+    }
+
+    public Integer getTicketTypeID() {
+        return ticketTypeID;
+    }
+
+    public void setTicketTypeID(Integer ticketTypeID) {
+        this.ticketTypeID = ticketTypeID;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public Set<ZoneType> getZoneTypes() {
+        return zoneTypes;
+    }
+
+    public void setZoneTypes(Set<ZoneType> zoneTypes) {
+        this.zoneTypes = zoneTypes;
+    }
+
+    public void addZone(ZoneType zoneType) {
+        zoneTypes.add(zoneType);
+    }
 }

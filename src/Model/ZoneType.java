@@ -15,7 +15,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.ZoneType")
+@Table(name = "ZoneType")
 public class ZoneType {
 
     @Id
@@ -26,4 +26,43 @@ public class ZoneType {
     @ManyToMany(mappedBy = "zondeTypes")
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<TicketType> ticketTypes = new HashSet<TicketType>();
+
+    public ZoneType() {
+    }
+
+    public Integer getZoneTypeId() {
+        return zoneTypeId;
+    }
+
+    public void setZoneTypeId(Integer zoneTypeId) {
+        this.zoneTypeId = zoneTypeId;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getPrivelegetype() {
+        return privelegetype;
+    }
+
+    public void setPrivelegetype(String privelegetype) {
+        this.privelegetype = privelegetype;
+    }
+
+    public Set<TicketType> getTicketTypes() {
+        return ticketTypes;
+    }
+
+    public void setTicketTypes(Set<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
+    }
+
+    public void addTicketType(TicketType ticketType) {
+        ticketTypes.add(ticketType);
+    }
 }

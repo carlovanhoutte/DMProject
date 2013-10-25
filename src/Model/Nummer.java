@@ -13,7 +13,7 @@ import javax.persistence.*;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.Nummer")
+@Table(name = "Nummer")
 public class Nummer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +25,47 @@ public class Nummer {
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "optredenID", nullable = false)
     private Optreden optreden;
+
+    public Nummer() {
+    }
+
+    public Integer getNummerID() {
+        return nummerID;
+    }
+
+    public void setNummerID(Integer nummerID) {
+        this.nummerID = nummerID;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
+
+    public Integer getDuur() {
+        return duur;
+    }
+
+    public void setDuur(Integer duur) {
+        this.duur = duur;
+    }
+
+    public Optreden getOptreden() {
+        return optreden;
+    }
+
+    public void setOptreden(Optreden optreden) {
+        this.optreden = optreden;
+    }
 }

@@ -18,7 +18,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Model.Festivaldag")
+@Table(name = "Festivaldag")
 public class Festivaldag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +36,43 @@ public class Festivaldag {
     @OrderBy
     @OrderColumn()
     private Set<Ticket> tickets = new HashSet<Ticket>();
+
+    public Festivaldag() {
+    }
+
+    public Integer getDagID() {
+        return dagID;
+    }
+
+    public void setDagID(Integer dagID) {
+        this.dagID = dagID;
+    }
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
+    }
+
+    public Festival getFestival() {
+        return festival;
+    }
+
+    public void setFestival(Festival festival) {
+        this.festival = festival;
+    }
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(Set<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+    }
 }
