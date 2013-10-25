@@ -1,3 +1,5 @@
+package Model;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -13,7 +15,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Ticket")
+@Table(name = "Model.Ticket")
 public class Ticket {
 
     @Id

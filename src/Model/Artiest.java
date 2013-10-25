@@ -1,3 +1,5 @@
+package Model;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -7,27 +9,24 @@ import javax.persistence.*;
  * Created with IntelliJ IDEA.
  * User: Carlo
  * Date: 25/10/13
- * Time: 11:04
+ * Time: 11:08
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "Zone")
-public class Zone {
+@Table(name = "Model.Artiest")
+public class Artiest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer zoneID;
+    private Integer artiestID;
     private String naam;
-    private Integer capaciteit;
+    private Integer aantalPersonen;
+    private String bio;
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "festivalID", nullable = false)
-    private Festival festival;
+    @JoinColumn(name = "optredenID", nullable = false)
+    private Optreden optreden;
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "zoneTypeID", nullable = false)
-    private ZoneType zoneType;
-    @OneToOne
-    @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "zoneID")
-    private Zone zone;
+    @JoinColumn(name = "reservatieID", nullable = false)
+    private KleedkamerReservatie kleedkamerReservatie;
 }

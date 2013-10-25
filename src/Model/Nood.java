@@ -1,3 +1,5 @@
+package Model;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -10,6 +12,8 @@ import javax.persistence.*;
  * Time: 11:19
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "Model.Nood")
 public class Nood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

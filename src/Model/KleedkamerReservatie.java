@@ -1,3 +1,5 @@
+package Model;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -11,6 +13,8 @@ import java.util.Date;
  * Time: 11:10
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "Model.KleedkamerReservatie")
 public class KleedkamerReservatie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

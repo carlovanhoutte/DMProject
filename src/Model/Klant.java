@@ -1,6 +1,6 @@
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package Model;
+
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,6 +9,8 @@ import javax.persistence.Id;
  * Time: 11:16
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name="Model.Klant")
 public class Klant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

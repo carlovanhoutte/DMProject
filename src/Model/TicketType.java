@@ -1,3 +1,5 @@
+package Model;
+
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
@@ -15,7 +17,7 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "TicketType")
+@Table(name = "Model.TicketType")
 public class TicketType {
 
     @Id
