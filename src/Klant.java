@@ -14,4 +14,5 @@ public class Klant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer klantID;
     private String naam;
+    private String klantType;
 }
