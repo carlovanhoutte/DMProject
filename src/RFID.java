@@ -10,6 +10,8 @@ import javax.persistence.*;
  * Time: 11:22
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "RFID")
 public class RFID {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,6 +10,8 @@ import javax.persistence.*;
  * Time: 11:04
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "Zone")
 public class Zone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

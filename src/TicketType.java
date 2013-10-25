@@ -1,7 +1,9 @@
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +14,8 @@ import java.util.Set;
  * Time: 10:54
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "TicketType")
 public class TicketType {
 
     @Id

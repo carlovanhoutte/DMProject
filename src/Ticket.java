@@ -12,6 +12,8 @@ import java.util.Set;
  * Time: 10:39
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "Ticket")
 public class Ticket {
 
     @Id

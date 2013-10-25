@@ -11,6 +11,8 @@ import java.util.Date;
  * Time: 11:09
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "Optreden")
 public class Optreden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

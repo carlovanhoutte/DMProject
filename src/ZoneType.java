@@ -1,10 +1,7 @@
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +12,8 @@ import java.util.Set;
  * Time: 10:56
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "ZoneType")
 public class ZoneType {
 
     @Id
