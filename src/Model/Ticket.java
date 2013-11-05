@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -27,8 +27,8 @@ public class Ticket {
     private TicketType ticketType;
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "bestellingID", nullable = false)
-    private Bestelling bestellings;
+    @JoinColumn(name = "bestellingsID", nullable = false)
+    private Bestelling bestelling;
     private Float prijs;
     @ManyToMany(mappedBy = "tickets")
     @Cascade({CascadeType.SAVE_UPDATE})
@@ -53,12 +53,12 @@ public class Ticket {
         this.ticketType = ticketType;
     }
 
-    public Bestelling getBestellings() {
-        return bestellings;
+    public Bestelling getBestelling() {
+        return bestelling;
     }
 
-    public void setBestellings(Bestelling bestellings) {
-        this.bestellings = bestellings;
+    public void setBestelling(Bestelling bestellings) {
+        this.bestelling = bestellings;
     }
 
     public Float getPrijs() {

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -26,7 +26,7 @@ public class TrackingRecord {
     private RFID rfid;
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "zoneID", nullable = false)
+    @JoinColumn(name = "zoneID", nullable = false, insertable = false, updatable = false)
     private Zone zoneUit;
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})

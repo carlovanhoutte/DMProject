@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -23,7 +23,7 @@ public class ZoneType {
     private Integer zoneTypeId;
     private String naam;
     private String privelegetype;
-    @ManyToMany(mappedBy = "zondeTypes")
+    @ManyToMany(mappedBy = "zoneTypes")
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<TicketType> ticketTypes = new HashSet<TicketType>();
 
