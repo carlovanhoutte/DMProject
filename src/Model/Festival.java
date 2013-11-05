@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import org.hibernate.annotations.Cascade;
 
