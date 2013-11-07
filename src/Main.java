@@ -1,3 +1,4 @@
+import generator.Generator;
 import org.hibernate.Session;
 import persistence.HibernateUtil;
 
@@ -10,6 +11,7 @@ import persistence.HibernateUtil;
  */
 public class Main {
     public static void main(String[] args) {
-          Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Generator.generate();
     }
 }

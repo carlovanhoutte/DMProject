@@ -80,7 +80,8 @@ public class Festival {
         this.zones = zones;
     }
 
-    public void addFestivaldag(Festivaldag festivaldag) {
+    public void addFestivaldag(Festivaldag festivaldag){
+        festivaldag.setFestival(this);
         festivaldagen.add(festivaldag);
     }
 

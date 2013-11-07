@@ -39,6 +39,9 @@ public class Optreden {
     @OneToMany(mappedBy = "optreden")
     @Cascade({CascadeType.SAVE_UPDATE})
     private Set<Nummer> nummers = new HashSet<Nummer>();
+    @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private Festivaldag festivaldag;
 
     public Optreden() {
     }
@@ -47,8 +50,17 @@ public class Optreden {
         return optredenID;
     }
 
+    public Festivaldag getFestivaldag() {
+        return festivaldag;
+    }
+
+    public void setFestivaldag(Festivaldag festivaldag) {
+        this.festivaldag = festivaldag;
+    }
+
     public void setOptredenID(Integer optredenID) {
         this.optredenID = optredenID;
+
     }
 
     public Date getStarttijdstipSoundcheck() {
