@@ -37,7 +37,7 @@ public class Controller {
         nextTransaction();
     }
 
-    public void registratieVerkoop(Klant klant, int aantal, TicketType ticketType, Set<Festivaldag> dagen) {
+    public void registratieVerkoop(Klant klant, int aantal, TicketType ticketType) {
         Bestelling bestelling = new Bestelling();
         bestelling.setHoeveelheid(aantal);
         bestelling.setKlant(klant);
@@ -46,7 +46,6 @@ public class Controller {
             Ticket ticket = new Ticket();
             ticket.setTicketType(ticketType);
             ticket.setBestelling(bestelling);
-            ticket.setFestivaldagen(dagen);
             bestelling.addTicket(ticket);
         }
         nextTransaction();
