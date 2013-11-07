@@ -14,7 +14,10 @@ import javax.jms.TextMessage;
  */
 public class ReceiverListener implements MessageListener {
 
+    DBinserter inserter;
+
     public ReceiverListener() {
+        inserter = new DBinserter();
     }
 
     @Override
@@ -27,5 +30,7 @@ public class ReceiverListener implements MessageListener {
             e.printStackTrace();
         }
         System.out.println(text);
+        inserter.insertIntoDB();
+        inserter.insertIntoMongo();
     }
 }

@@ -1,6 +1,6 @@
 package tracker;
 
-import org.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
@@ -21,17 +21,13 @@ import java.util.Random;
 public class TrackingSender {
 
     public static void main(String[] args) {
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
-        Session session;
-        MessageProducer producer;
-        Connection connection;
         try {
-
-            connection = connectionFactory.createConnection();
+            ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+            Connection connection = connectionFactory.createConnection();
             connection.start();
-            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createQueue("FESTIVAL.TRACKING");
-            producer = session.createProducer(destination);
+            MessageProducer producer = session.createProducer(destination);
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
             Random random = new Random();
@@ -47,20 +43,17 @@ public class TrackingSender {
             Document document = new Document(root);
             StringWriter sw = new StringWriter();
             XMLOutputter outputter = new XMLOutputter();
-            try {
-                outputter.output(document, sw);
-                TextMessage message = session.createTextMessage(sw.toString());
-                producer.send(message);
-            } catch (JMSException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
+            outputter.output(document, sw);
+            TextMessage message = session.createTextMessage(sw.toString());
+            producer.send(message);
+            System.out.println(message.getText());
             producer.close();
             session.close();
             connection.close();
         } catch (JMSException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

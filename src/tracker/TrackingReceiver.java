@@ -1,7 +1,6 @@
 package tracker;
 
-import model.TrackingRecord;
-import org.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
@@ -35,10 +34,6 @@ public class TrackingReceiver {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    private void listen(){
-
     }
 }
 
