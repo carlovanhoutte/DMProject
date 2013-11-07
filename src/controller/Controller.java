@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import org.hibernate.Session;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class Controller {
 
     }
 
-    public void slaagPassageOp(Zone zonein, Zone zoneUit, RFID rfid) {
+    public void slaagPassageOp(Zone zonein, Zone zoneUit, RFID rfid, Session session) {
         TrackingRecord trackingRecord = new TrackingRecord();
         trackingRecord.setTijdstip(new Date(System.currentTimeMillis()));
         trackingRecord.setZoneIn(zonein);

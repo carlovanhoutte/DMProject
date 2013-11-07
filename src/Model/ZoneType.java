@@ -22,7 +22,6 @@ public class ZoneType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer zoneTypeId;
     private String naam;
-    private String privelegetype;
     @ManyToMany(mappedBy = "zoneTypes")
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<TicketType> ticketTypes = new HashSet<TicketType>();
@@ -44,14 +43,6 @@ public class ZoneType {
 
     public void setNaam(String naam) {
         this.naam = naam;
-    }
-
-    public String getPrivelegetype() {
-        return privelegetype;
-    }
-
-    public void setPrivelegetype(String privelegetype) {
-        this.privelegetype = privelegetype;
     }
 
     public Set<TicketType> getTicketTypes() {

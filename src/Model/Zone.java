@@ -30,10 +30,6 @@ public class Zone {
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "zoneTypeID", nullable = false)
     private ZoneType zoneType;
-    @OneToOne
-    @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "zoneID")
-    private Zone zone;
     @OneToMany(mappedBy = "zone")
     @Cascade({CascadeType.SAVE_UPDATE})
     private Set<Optreden> optredens = new HashSet<Optreden>();
@@ -82,14 +78,6 @@ public class Zone {
 
     public void setZoneType(ZoneType zoneType) {
         this.zoneType = zoneType;
-    }
-
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
     }
 
     public Set<Optreden> getOptredens() {
