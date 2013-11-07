@@ -32,7 +32,7 @@ public class TrackingSender {
 
             Random random = new Random();
             Element root = new Element("trackingrecord");
-            Element timestamp = new Element("timestamp").setAttribute("tijdstip", Calendar.getInstance().getTime().toString());
+            Element timestamp = new Element("timestamp").setAttribute("tijdstip", Long.toString(Calendar.getInstance().getTime().getTime()));
             Element id = new Element("rfid").setAttribute("id", Integer.toString(random.nextInt(250)));
             Element zoneIn = new Element("zoneIn").setAttribute("zoneIn", Integer.toString(random.nextInt(250)));
             Element zoneUit = new Element("zoneUit").setAttribute("zoneUit", Integer.toString(random.nextInt(250)));
