@@ -29,6 +29,10 @@ public class Generator {
         insertZones();
         insertArtiesten();
         insertOptredens();
+        insertNummers();
+        insertTicketTypes();
+        insertRFIDs();
+        insertTrackingRecords();
     }
 
     private static Festival generateFestival(String naam, String locatie) {
@@ -213,6 +217,125 @@ public class Generator {
                     optreden.setToelatingPers(true);
                     session.saveOrUpdate(optreden);
                 }
+            }
+        }
+        tx.commit();
+    }
+
+    private static void insertNummers() {
+        int counter = 1;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("FROM Optreden");
+        List <Optreden> optredens = query.list();
+        for (Optreden optreden : optredens) {
+
+            for (int i = 0; i<10; i++) {
+                Nummer nummer = new Nummer();
+                nummer.setAuteur("AuteurNaam");
+                nummer.setNaam("Nummer " + counter);
+                nummer.setDuur(240);
+                nummer.setOptreden(optreden);
+                counter++;
+                session.saveOrUpdate(nummer);
+            }
+        }
+        tx.commit();
+    }
+
+    private static void insertTicketTypes() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from Festivaldag");
+        List <Festivaldag> festivaldagen = query.list();
+
+        TicketType typeVIP = new TicketType();
+        typeVIP.setNaam("VIP");
+        typeVIP.setPrijs(520.00f);
+        for (Festivaldag festivaldag : festivaldagen) {
+        typeVIP.addFestivaldag(festivaldag);
+        }
+
+        TicketType typePers = new TicketType();
+        typePers.setNaam("Pers");
+        typePers.setPrijs(0.00f);
+        for (Festivaldag festivaldag : festivaldagen) {
+            typePers.addFestivaldag(festivaldag);
+        }
+
+        TicketType typeNormaal = new TicketType();
+        typeNormaal.setNaam("Normaal");
+        typeNormaal.setPrijs(240.00f);
+        for (Festivaldag festivaldag : festivaldagen) {
+            typeNormaal.addFestivaldag(festivaldag);
+        }
+
+        session.saveOrUpdate(typeVIP);
+        session.saveOrUpdate(typePers);
+        session.saveOrUpdate(typeNormaal);
+
+        tx.commit();
+    }
+
+    private static void insertRFIDs() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("From TicketType");
+        List <TicketType> ticketTypes = query.list();
+
+        for(int i=0; i<2000; i++) {
+            RFID rfid = new RFID();
+            rfid.setTicketType(ticketTypes.get(0));
+            session.saveOrUpdate(rfid);
+        }
+
+        for(int i=0; i<2000; i++) {
+            RFID rfid = new RFID();
+            rfid.setTicketType(ticketTypes.get(1));
+            session.saveOrUpdate(rfid);
+        }
+
+        for(int i=0; i<6000; i++) {
+            RFID rfid = new RFID();
+            rfid.setTicketType(ticketTypes.get(2));
+            session.saveOrUpdate(rfid);
+        }
+
+        tx.commit();
+    }
+
+    private static void insertTrackingRecords() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from RFID");
+        List <RFID> rfids = query.list();
+
+        Query query1 = session.createQuery("from Festival");
+        List <Festival> festivals = query1.list();
+
+        for(RFID rfid : rfids) {
+            for (int i=0; i<10; i++) {
+                TrackingRecord trackingRecord = new TrackingRecord();
+                trackingRecord.setRfid(rfid);
+                Festival festival = festivals.get(random.nextInt(festivals.size()));
+                Zone[] zones = festival.getZones().toArray(new Zone[festival.getZones().size()]);
+
+                Zone zoneUit = zones[random.nextInt(zones.length)];
+                Zone zoneIn = zones[random.nextInt(zones.length)];
+                trackingRecord.setZoneUit(zoneUit);
+                trackingRecord.setZoneIn(zoneIn);
+                Festivaldag[] festivaldagen = festival.getFestivaldagen().toArray(new Festivaldag[festival.getFestivaldagen().size()]);
+                Festivaldag festivaldag = festivaldagen[random.nextInt(festival.getFestivaldagen().size())];
+                Date tijdstip = new Date();
+                tijdstip.setTime(festivaldag.getDatum().getTime());
+                tijdstip.setHours(11 + random.nextInt(8));
+                tijdstip.setMinutes(random.nextInt(60));
+                trackingRecord.setTijdstip(tijdstip);
+
+                session.saveOrUpdate(trackingRecord);
             }
         }
         tx.commit();

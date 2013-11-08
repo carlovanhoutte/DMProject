@@ -32,10 +32,10 @@ public class Festivaldag {
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "DagTicket",
             joinColumns = {@JoinColumn(name = "dagID")},
-            inverseJoinColumns = {@JoinColumn(name = "ticketID")})
+            inverseJoinColumns = {@JoinColumn(name = "ticketTypeID")})
     @OrderBy
     @OrderColumn()
-    private Set<Ticket> tickets = new HashSet<Ticket>();
+    private Set<TicketType> ticketTypes = new HashSet<TicketType>();
 
     public Festivaldag() {
     }
@@ -64,15 +64,15 @@ public class Festivaldag {
         this.festival = festival;
     }
 
-    public Set<Ticket> getTickets() {
-        return tickets;
+    public Set<TicketType> getTicketsTicketTypes() {
+        return ticketTypes;
     }
 
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTicketTypes(Set<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
     }
 
-    public void addTicket(Ticket ticket) {
-        tickets.add(ticket);
+    public void addTicketTypes(TicketType ticketType) {
+        ticketTypes.add(ticketType);
     }
 }

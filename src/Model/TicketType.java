@@ -1,6 +1,7 @@
 package model;
 
 import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -32,6 +33,13 @@ public class TicketType {
     @OrderBy
     @OrderColumn()
     private Set<ZoneType> zoneTypes = new HashSet<ZoneType>();
+    @ManyToMany
+    @Cascade({CascadeType.SAVE_UPDATE})
+    @JoinTable(name = "DagTicket",
+            joinColumns = {@JoinColumn(name = "ticketTypeID")},
+            inverseJoinColumns = {@JoinColumn(name = "dagID")})
+    private Set<Festivaldag> festivaldagen = new HashSet<Festivaldag>();
+    private Float prijs;
 
     public TicketType() {
     }
@@ -62,5 +70,25 @@ public class TicketType {
 
     public void addZone(ZoneType zoneType) {
         zoneTypes.add(zoneType);
+    }
+
+    public Float getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(Float prijs) {
+        this.prijs = prijs;
+    }
+
+    public Set<Festivaldag> getFestivaldagen() {
+        return festivaldagen;
+    }
+
+    public void setFestivaldagen(Set<Festivaldag> festivaldagen) {
+        this.festivaldagen = festivaldagen;
+    }
+
+    public void addFestivaldag(Festivaldag festivaldag) {
+        festivaldagen.add(festivaldag);
     }
 }

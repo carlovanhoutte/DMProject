@@ -29,10 +29,7 @@ public class Ticket {
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "bestellingsID", nullable = false)
     private Bestelling bestelling;
-    private Float prijs;
-    @ManyToMany(mappedBy = "tickets")
-    @Cascade({CascadeType.SAVE_UPDATE})
-    private Set<Festivaldag> festivaldagen = new HashSet<Festivaldag>();
+
 
     public Ticket() {
     }
@@ -59,25 +56,5 @@ public class Ticket {
 
     public void setBestelling(Bestelling bestellings) {
         this.bestelling = bestellings;
-    }
-
-    public Float getPrijs() {
-        return prijs;
-    }
-
-    public void setPrijs(Float prijs) {
-        this.prijs = prijs;
-    }
-
-    public Set<Festivaldag> getFestivaldagen() {
-        return festivaldagen;
-    }
-
-    public void setFestivaldagen(Set<Festivaldag> festivaldagen) {
-        this.festivaldagen = festivaldagen;
-    }
-
-    public void addFestivaldag(Festivaldag festivaldag) {
-        festivaldagen.add(festivaldag);
     }
 }
