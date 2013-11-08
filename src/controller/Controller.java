@@ -7,6 +7,7 @@ import persistence.HibernateUtil;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -25,6 +26,44 @@ public class Controller {
     public Controller() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         tx = session.beginTransaction();
+    }
+
+    public void start(){
+        boolean doorgaan = true;
+        while(doorgaan)
+        System.out.println("Geef in== 1: passage, 2: ticketverkoop"); // 3: zoekOptredent, 4: zoekFestival");
+        Scanner scanner = new Scanner(System.in);
+        int keuze = scanner.nextInt();
+        scanner.reset();
+        switch(keuze){
+            case 1:
+                System.out.printf("Geef RFID: ");
+                Integer id = scanner.nextInt();
+                scanner.reset();
+                System.out.printf("Geef id zone in: ");
+                Integer zoneIn = scanner.nextInt();
+                scanner.reset();
+                System.out.printf("Geef id zone uit: ");
+                Integer zoneUit = scanner.nextInt();
+                scanner.reset();
+                RFID rfid = (RFID) session.get(RFID.class, id);
+                Zone zoIn = (Zone) session.get(Zone.class, zoneIn);
+                Zone zoUit = (Zone) session.get(Zone.class, zoneUit);
+                slaagPassageOp(zoIn, zoUit, rfid);
+                break;
+            case 2:
+                System.out.printf("Geef id klant: ");
+                Integer kl = scanner.nextInt();
+                scanner.reset();
+                System.out.printf("Geef aantal tickets: ");
+                int aantal = scanner.nextInt();
+                scanner.reset();
+                Klant klant = (Klant) session.get(Klant.class, kl);
+                TicketType type = (TicketType) session.get(TicketType.class, 1);
+                registratieVerkoop(klant, aantal, type);
+                break;
+            default: doorgaan = false;
+        }
     }
 
     public void slaagPassageOp(Zone zonein, Zone zoneUit, RFID rfid) {

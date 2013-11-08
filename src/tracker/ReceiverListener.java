@@ -73,7 +73,7 @@ public class ReceiverListener implements MessageListener {
 
         String artiest = "";
 
-        Set<Optreden> optredens = zoIn.getOptredens();
+        /*Set<Optreden> optredens = zoIn.getOptredens();
         if (optredens != null) {
             for (Optreden optreden : optredens) {
                 Date begin = optreden.getStarttijdstipOptreden();
@@ -82,7 +82,7 @@ public class ReceiverListener implements MessageListener {
                     artiest = optreden.getArtiest().getNaam();
                 }
             }
-        }
+        }  */
 
         ta.commit();
 

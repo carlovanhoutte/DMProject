@@ -2,7 +2,7 @@
   <library name="org.jdom:jdom:2.0.2" type="repository">
     <properties maven-id="org.jdom:jdom:2.0.2" />
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../Examenproject/DMProject/lib/jdom-2.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jdom-2.0.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
