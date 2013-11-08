@@ -63,6 +63,7 @@ public class Controller {
                 registratieVerkoop(klant, aantal, type);
                 break;
             default: doorgaan = false;
+                break;
         }
     }
 

@@ -33,11 +33,8 @@ public class TicketType {
     @OrderBy
     @OrderColumn()
     private Set<ZoneType> zoneTypes = new HashSet<ZoneType>();
-    @ManyToMany
+    @ManyToMany(mappedBy = "ticketTypes")
     @Cascade({CascadeType.SAVE_UPDATE})
-    @JoinTable(name = "DagTicket",
-            joinColumns = {@JoinColumn(name = "ticketTypeID")},
-            inverseJoinColumns = {@JoinColumn(name = "dagID")})
     private Set<Festivaldag> festivaldagen = new HashSet<Festivaldag>();
     private Float prijs;
 
@@ -64,20 +61,20 @@ public class TicketType {
         return zoneTypes;
     }
 
-    public void setZoneTypes(Set<ZoneType> zoneTypes) {
-        this.zoneTypes = zoneTypes;
-    }
-
-    public void addZone(ZoneType zoneType) {
-        zoneTypes.add(zoneType);
-    }
-
     public Float getPrijs() {
         return prijs;
     }
 
     public void setPrijs(Float prijs) {
         this.prijs = prijs;
+    }
+
+    public void setZoneTypes(Set<ZoneType> zoneTypes) {
+        this.zoneTypes = zoneTypes;
+    }
+
+    public void addZone(ZoneType zoneType) {
+        zoneTypes.add(zoneType);
     }
 
     public Set<Festivaldag> getFestivaldagen() {

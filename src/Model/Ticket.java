@@ -30,7 +30,6 @@ public class Ticket {
     @JoinColumn(name = "bestellingsID", nullable = false)
     private Bestelling bestelling;
 
-
     public Ticket() {
     }
 
